@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanity Compass - Navigate Global Understanding</title>
+    <meta name="description" content="An interactive platform to develop empathy, understand complex global issues from multiple perspectives, and find meaningful ways to contribute to positive change.">
+    <meta name="author" content="Humanity Compass Project">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Humanity Compass">
+    <meta property="og:description" content="Navigate global understanding through interactive empathy-building exercises">
+    <meta property="og:image" content="assets/og-image.png">
+    <meta property="og:url" content="https://[username].github.io/humanity-compass/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Humanity Compass">
+    <meta name="twitter:description" content="Navigate global understanding through interactive empathy-building exercises">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Accessibility: Reduce motion preference -->
+    <style>
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+                    <path d="M24 8c-4.4 0-8 3.6-8 8 0 2.2.9 4.2 2.5 5.8l-7 7c-1.1-1.1-1.7-2.8-1.7-4.6 0-3.3 2.7-6 6-6s6 2.7 6 6c0 1.8-.6 3.5-1.7 4.6l-7-7c1.6-1.6 2.5-3.6 2.5-5.8 0-4.4-3.6-8-8-8zm0 14c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z" fill="currentColor"/>
+                </svg>
+                <h1>Humanity Compass</h1>
+            </div>
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="#learn">Learn</a></li>
+                    <li><a href="#explore">Explore</a></li>
+                    <li><a href="#act">Act</a></li>
+                    <li><a href="#reflect">Reflect</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 4.5a1 1 0 011 1V7a1 1 0 01-2 0V5.5a1 1 0 011-1zm5.657 5.657a1 1 0 01-1.414-1.414L13.414 7.5a1 1 0 11-1.414 1.414L11.086 9.086a1 1 0 011.414 1.414l1.172 1.172a1 1 0 01-1.414 1.414l-1.172-1.172a1 1 0 011.414-1.414zm0 9a1 1 0 011 1v2.5a1 1 0 01-2 0v-2.5a1 1 0 011-1zM4.5 12a1 1 0 011-1H5.5a1 1 0 010 2h-1a1 1 0 01-1-1zM18.5 12a1 1 0 011-1h1a1 1 0 010 2h-1a1 1 0 01-1-1zM12 16.5a1 1 0 011 1V20a1 1 0 01-2 0v-1.5a1 1 0 011-1zm5.657-5.657a1 1 0 01-1.414 1.414l1.172 1.172a1 1 0 011.414-1.414l-1.172-1.172a1 1 0 01-1.414 1.414l-1.172 1.172a1 1 0 011.414 1.414l1.172-1.172z" fill="currentColor"/>
+                    </svg>
+                </button>
+                <button id="language-switch" aria-label="Switch language" class="language-switch">
+                    EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container hero-container">
+                <h1 id="hero-heading" class="hero-title">Navigate Global Understanding</h1>
+                <p class="hero-subtitle">
+                    An interactive journey to build empathy, understand complex perspectives,
+                    and discover meaningful ways to contribute to our shared humanity.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary btn-large" id="start-journey">
+                        Begin Your Journey
+                    </button>
+                    <button class="btn-secondary btn-large" id="quick-explore">
+                        Quick Exploration
+                    </button>
+                </div>
+                <div class="hero-visual">
+                    <canvas id="compass-canvas" width="300" height="300" aria-label="Interactive compass visualization"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn Section -->
+        <section id="learn" class="section learn-section" aria-labelledby="learn-heading">
+            <div class="container">
+                <h2 id="learn-heading" class="section-heading">Learn</h2>
+                <div class="learn-grid">
+                    <!-- Perspective Taking Exercise -->
+                    <article class="learn-card perspective-card" tabindex="0">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2L15 9H22l-3 4 2 7-7-3-7 3 2-7-3-4h7l3-4zM7 9l2 3H4l2-3zm10 7v3H9v-3zm-5 4h2v3H6v-3z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Perspective Taking</h3>
+                        <p class="card-description">
+                            Practice seeing the world through others' eyes with guided exercises
+                            that challenge assumptions and build deeper understanding.
+                        </p>
+                        <button class="btn-outline" id="try-perspective">
+                            Try Exercise
+                        </button>
+                    </article>
+
+                    <!-- Systems Thinking -->
+                    <article class="learn-card systems-card" tabindex="0">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7v-2h10v2z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Systems Thinking</h3>
+                        <p class="card-description">
+                            Understand how global issues interconnect and influence each other
+                            through interactive network visualizations.
+                        </p>
+                        <button class="btn-outline" id="try-systems">
+                            Explore Systems
+                        </button>
+                    </article>
+
+                    <!-- Cultural Intelligence -->
+                    <article class="learn-card culture-card" tabindex="0">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2L15 9l5 2-4 3 1 5-4-2-4 2 1-5-4-3 5-2zM12 17l-4-4h3V9h2v1h3l-4 4z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Cultural Intelligence</h3>
+                        <p class="card-description">
+                            Develop awareness of cultural nuances and communication styles
+                            across different societies and communities.
+                        </p>
+                        <button class="btn-outline" id="try-culture">
+                            Learn More
+                        </button>
+                    </article>
+
+                    <!-- Ethical Reasoning -->
+                    <article class="learn-card ethics-card" tabindex="0">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7v-2h10v2z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M7 9v2h10V9H7z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Ethical Reasoning</h3>
+                        <p class="card-description">
+                            Navigate complex moral dilemmas with frameworks that consider
+                            multiple stakeholders and long-term consequences.
+                        </p>
+                        <button class="btn-outline" id="try-ethics">
+                            Explore Ethics
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explore Section -->
+        <section id="explore" class="section explore-section" aria-labelledby="explore-heading">
+            <div class="container">
+                <h2 id="explore-heading" class="section-heading">Explore Global Issues</h2>
+                <p class="section-description">
+                    Dive into complex global topics through multi-perspective explorations,
+                    data visualizations, and interactive scenarios.
+                </p>
+
+                <!-- Issue Cards -->
+                <div class="issue-grid">
+                    <!-- Climate Change -->
+                    <article class="issue-card" tabindex="0" data-issue="climate">
+                        <div class="issue-header">
+                            <h3 class="issue-title">Climate Change</h3>
+                            <span class="issue-tag">Environment</span>
+                        </div>
+                        <div class="issue-content">
+                            <p class="issue-summary">
+                                Examine how climate change affects different communities,
+                                economies, and ecosystems around the world.
+                            </p>
+                            <div class="issue-stats">
+                                <div class="stat">
+                                    <span class="stat-number">+1.2°C</span>
+                                    <span class="stat-label">Global warming since 1880</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">20M</span>
+                                    <span class="stat-label">People displaced annually</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="issue-btn" aria-label="Explore Climate Change Perspectives">
+                            Explore Perspectives
+                        </button>
+                    </article>
+
+                    <!-- Global Health -->
+                    <article class="issue-card" tabindex="0" data-issue="health">
+                        <div class="issue-header">
+                            <h3 class="issue-title">Global Health</h3>
+                            <span class="issue-tag">Health</span>
+                        </div>
+                        <div class="issue-content">
+                            <p class="issue-summary">
+                                Understand healthcare access disparities and pandemic
+                                responses across different regions.
+                            </p>
+                            <div class="issue-stats">
+                                <div class="stat">
+                                    <span class="stat-number">50%</span>
+                                    <span class="stat-label">Lack access to essential health services</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">100M</span>
+                                    <span class="stat-label">Pushed into extreme poverty by health costs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="issue-btn" aria-label="Explore Global Health Perspectives">
+                            Explore Perspectives
+                        </button>
+                    </article>
+
+                    <!-- Economic Inequality -->
+                    <article class="issue-card" tabindex="0" data-issue="economy">
+                        <div class="issue-header">
+                            <h3 class="issue-title">Economic Inequality</h3>
+                            <span class="issue-tag">Economy</span>
+                        </div>
+                        <div class="issue-content">
+                            <p class="issue-summary">
+                                Explore wealth distribution patterns and their impact
+                                on social mobility and opportunity.
+                            </p>
+                            <div class="issue-stats">
+                                <div class="stat">
+                                    <span class="stat-number">1%</span>
+                                    <span class="stat-label">Owns 45% of global wealth</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">700M</span>
+                                    <span class="stat-label">Live in extreme poverty</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="issue-btn" aria-label="Explore Economic Inequality Perspectives">
+                            Explore Perspectives
+                        </button>
+                    </article>
+
+                    <!-- Migration & Displacement -->
+                    <article class="issue-card" tabindex="0" data-issue="migration">
+                        <div class="issue-header">
+                            <h3 class="issue-title">Migration & Displacement</h3>
+                            <span class="issue-tag">Society</span>
+                        </div>
+                        <div class="issue-content">
+                            <p class="issue-summary">
+                                Learn about the causes, challenges, and contributions
+                                of people on the move worldwide.
+                            </p>
+                            <div class="issue-stats">
+                                <div class="stat">
+                                    <span class="stat-number">82.4M</span>
+                                    <span class="stat-label">Forcibly displaced worldwide</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">1 in 30</span>
+                                    <span class="stat-label">People are migrants</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="issue-btn" aria-label="Explore Migration Perspectives">
+                            Explore Perspectives
+                        </button>
+                    </article>
+
+                    <!-- Technology & Society -->
+                    <article class="issue-card" tabindex="0" data-issue="technology">
+                        <div class="issue-header">
+                            <h3 class="issue-title">Technology & Society</h3>
+                            <span class="issue-tag">Technology</span>
+                        </div>
+                        <div class="issue-content">
+                            <p class="issue-summary">
+                                Examine how technological advances affect equality,
+                                privacy, and social connections globally.
+                            </p>
+                            <div class="issue-stats">
+                                <div class="stat">
+                                    <span class="stat-number">3.7B</span>
+                                    <span class="stat-label">People remain offline</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">60%</span>
+                                    <span class="stat-label">Worry about AI impact on jobs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="issue-btn" aria-label="Explore Technology Perspectives">
+                            Explore Perspectives
+                        </button>
+                    </article>
+
+                    <!-- Food Security -->
+                    <article class="issue-card" tabindex="0" data-issue="food">
+                        <div class="issue-header">
+                            <h3 class="issue-title">Food Security</h3>
+                            <span class="issue-tag">Food</span>
+                        </div>
+                        <div class="issue-content">
+                            <p class="issue-summary">
+                                Investigate global food systems, nutrition access,
+                                and sustainable agriculture challenges.
+                            </p>
+                            <div class="issue-stats">
+                                <div class="stat">
+                                    <span class="stat-number">811M</span>
+                                    <span class="stat-label">People suffer from hunger</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">1.9B</span>
+                                    <span class="stat-label">Adults are overweight or obese</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="issue-btn" aria-label="Explore Food Security Perspectives">
+                            Explore Perspectives
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Act Section -->
+        <section id="act" class="section act-section" aria-labelledby="act-heading">
+            <div class="container">
+                <h2 id="act-heading" class="section-heading">Take Meaningful Action</h2>
+                <p class="section-description">
+                    Translate understanding into action with personalized guidance,
+                    skill-building resources, and community connection tools.
+                </p>
+
+                <!-- Action Pathfinder -->
+                <div class="action-pathfinder">
+                    <div class="pathfinder-header">
+                        <h3>Find Your Path to Impact</h3>
+                        <p class="pathfinder-subtitle">
+                            Answer a few questions to discover personalized ways
+                            you can contribute based on your interests, skills, and capacity.
+                        </p>
+                    </div>
+
+                    <form id="action-finder-form" class="pathfinder-form">
+                        <div class="form-group">
+                            <label for="interest-area">What interests you most?</label>
+                            <select id="interest-area" required>
+                                <option value="">Select an interest area...</option>
+                                <option value="environment">Environment & Sustainability</option>
+                                <option value="health">Global Health & Wellbeing</option>
+                                <option value="education">Education & Literacy</option>
+                                <option value="human-rights">Human Rights & Justice</option>
+                                <option value="technology">Technology for Good</option>
+                                <option value="community">Community Building</option>
+                                <option value="arts-culture">Arts & Culture</option>
+                                <option value="animal-welfare">Animal Welfare</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="skill-type">What skills would you like to contribute?</label>
+                            <select id="skill-type" required>
+                                <option value="">Select your skills...</option>
+                                <option value="direct-action">Direct Action & Volunteering</option>
+                                <option value="advocacy">Advocacy & Awareness</option>
+                                <option value="fundraising">Fundraising & Resource Mobilization</option>
+                                <option value="technical">Technical & Digital Skills</option>
+                                <option value="creative">Creative & Communications</option>
+                                <option value="organizational">Organizational & Leadership</option>
+                                <option value="teaching">Teaching & Mentoring</option>
+                                <option value="research">Research & Analysis</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time-commitment">How much time can you commit?</label>
+                            <select id="time-commitment" required>
+                                <option value="">Select time commitment...</option>
+                                <option value="micro">Micro-actions (minutes/day)</option>
+                                <option value="occasional">Occasional (hours/week)</option>
+                                <option value="regular">Regular (several hours/week)</option>
+                                <option value="substantial">Substantial (part-time/flexible)</option>
+                                <option value="dedicated">Dedicated (full-time commitment)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-lg" id="find-path">
+                            Discover My Path
+                        </button>
+                    </form>
+
+                    <div id="path-results" class="path-results hidden">
+                        <!-- Results will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Skill Building -->
+                <div class="skill-building">
+                    <h3>Build Impactful Skills</h3>
+                    <div class="skills-grid">
+                        <article class="skill-card" tabindex="0">
+                            <h4>Active Listening</h4>
+                            <p>Learn techniques to truly hear and understand others' perspectives.</p>
+                            <button class="btn-sm" id="learn-listening">Learn</button>
+                        </article>
+
+                        <article class="skill-card" tabindex="0">
+                            <h4>Constructive Dialogue</h4>
+                            <p>Navigate difficult conversations with empathy and respect.</p>
+                            <button class="btn-sm" id="learn-dialogue">Learn</button>
+                        </article>
+
+                        <article class="skill-card" tabindex="0">
+                            <h4>Critical Thinking</h4>
+                            <p>Analyze information objectively and identify biases.</p>
+                            <button class="btn-sm" id="learn-thinking">Learn</button>
+                        </article>
+
+                        <article class="skill-card" tabindex="0">
+                            <h4>Project Planning</h4>
+                            <p>Design and implement effective initiatives for change.</p>
+                            <button class="btn-sm" id="learn-planning">Learn</button>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Action Guide Download -->
+                <div class="action-guide">
+                    <h3>Download Your Personal Action Guide</h3>
+                    <p>
+                        Get a customized, printable guide with actionable steps,
+                        resources, and reflection prompts based on your exploration.
+                    </p>
+                    <button class="btn-outline" id="download-guide">
+                        Generate My Guide
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflect Section -->
+        <section id="reflect" class="section reflect-section" aria-labelledby="reflect-heading">
+            <div class="container">
+                <h2 id="reflect-heading" class="section-heading">Reflect & Grow</h2>
+                <p class="section-description">
+                    Deepen your understanding through journaling, perspective tracking,
+                    and growth measurement tools.
+                </p>
+
+                <!-- Reflection Journal -->
+                <div class="reflection-tools">
+                    <div class="journal-card" tabindex="0">
+                        <h3>Perspective Journal</h3>
+                        <p>
+                            Track how your understanding evolves over time with guided
+                            prompts and private, secure journaling (all data stays in your browser).
+                        </p>
+                        <button class="btn-outline" id="open-journal">
+                            Open Journal
+                        </button>
+                    </div>
+
+                    <div class="growth-card" tabindex="0">
+                        <h3>Growth Tracking</h3>
+                        <p>
+                            Visualize your empathy and understanding development
+                            through interactive charts and milestones.
+                        </p>
+                        <button class="btn-outline" id="open-tracker">
+                            View Progress
+                        </button>
+                    </div>
+
+                    <div class="community-card" tabindex="0">
+                        <h3>Community Insights</h3>
+                        <p>
+                            Explore anonymized insights from others' journeys
+                            to broaden your perspective further.
+                        </p>
+                        <button class="btn-outline" id="open-insights">
+                            See Community
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Daily Reflection -->
+                <div class="daily-reflection">
+                    <h3>Today's Reflection Prompt</h3>
+                    <div class="prompt-card" id="daily-prompt">
+                        <!-- Prompt will be loaded dynamically -->
+                        <p class="prompt-loading">Loading today's reflection...</p>
+                    </div>
+                    <div class="prompt-actions">
+                        <button class="btn-sm" id="save-reflection">
+                            Save Response
+                        </button>
+                        <button class="btn-outline" id="new-prompt">
+                            New Prompt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section" aria-labelledby="cta-heading">
+            <div class="container">
+                <h2 id="cta-heading" class="cta-heading">Begin Your Journey Today</h2>
+                <p class="cta-subtitle">
+                    The world needs more people who seek to understand before judging,
+                    who listen before speaking, and who act with compassion and insight.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn-primary btn-xl" id="start-now">
+                        Start Your Compass Journey
+                    </button>
+                    <button class="btn-outline btn-xl" id="learn-more">
+                        How It Works
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+                        <path d="M16 4c-3 0-5 2-5 5 0 1.3.5 2.5 1.4 3.4L4 16c-.8-.8-1.3-2-1.3-3.2 0-2.8 2.2-5 5-5s5 2.2 5 5c0 1.2-.5 2.4-1.3 3.2l8.6 8.6c.9-.9 1.4-2.1 1.4-3.4v-.1c0-3-2-5-5-5zm0 10c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z" fill="currentColor"/>
+                    </svg>
+                    <h2>Humanity Compass</h2>
+                </div>
+                <p class="footer-tagline">
+                    Navigating global understanding, one perspective at a time.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#learn">Learn</a></li>
+                        <li><a href="#explore">Issues</a></li>
+                        <li><a href="#act">Act</a></li>
+                        <li><a href="#reflect">Reflect</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Perspective Library</a></li>
+                        <li><a href="#">Action Guides</a></li>
+                        <li><a href="#">Skill Builders</a></li>
+                        <li><a href="#">Reflection Tools</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">Our Philosophy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">Credits & Sources</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 001.88-2.38 8.55 8.55 0 01-2.7 1.04 4.3 4.3 0 00-7.3 4.04c-.67-.01-1.31-.19-1.88-.5v.05a4.3 4.3 0 003.44 4.23c-.8.15-1.65.23-2.48.13a4.25 4.25 0 003.95 2.78A8.53 8.53 0 014.5 18.1c-2.33.45-4.31-1.35-5.09-3.21a8.4 8.4 0 0014.64 9.9A11.5 11.5 0 0115 22.5a11.51 11.51 0 01-6.55 1.74c2.22-.37 4.16-1.41 5.46-3.49.42.37.89.69 1.38 1.02a4.34 4.34 0 00-6.6 2.26A11.52 11.52 0 0113.46 6z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="GitHub" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 0c-6.63 0-12 5.37-12 12 0 5.3 3.44 9.8 8.2 11.39.6.11.82-.25.82-.56v-2.03c-3.33.72-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.1-.75.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.82 1.31 3.51 1-.11-.78.41-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.26-3.22-1.24-.3-2.55-.62-2.55-.62-1.01-.69.25-.67.25-.67 1.08.07 1.49 1 1.49 1 .89 1.44 2.26 1 2.81 1 2.2-.31 4.96-1.68 4.96-3.75 0-2.08-.74-3.8-2-5.11-.2-.49-.82-1.47-.23-3.06 0 0 1.64-.52 5.37 2 .46-.13.95-.2 1.43-.2s.97.07 1.43.2c3.73-2.52 5.36-2 5.36-2s.25 1.19.23 3.06c-1.26 1.31-2 3.11-2 5.11 0 4.28-2.8 5.63-5.47 5.92.43.37.82 1.1.82 2.22v3.29c0 .31.22.56.82.56A12.01 12.01 0 0012 24c6.63 0 12-5.37 12-12 0-6.63-5.37-12-12-12z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Email" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14-6-4-6 4V6l6 4 6-4v12z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Humanity Compass. All rights reserved.</p>
+                <p class="footer-disclaimer">
+                    This is an educational resource. Perspectives presented are for understanding purposes
+                    and do not necessarily reflect endorsement of any particular viewpoint.
+                </p>
+                <p class="footer-credit">
+                    Developed by VIKRAM CN TRIVIKRAM<br>
+                    Built with ♥ using only HTML, CSS, and JavaScript - deployable anywhere with static hosting.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Templates -->
+    <div id="perspective-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="perspective-modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="perspective-modal-title">Perspective Taking Exercise</h3>
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Perspective exercise content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="perspective-complete">Complete Exercise</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="journal-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="journal-modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="journal-modal-title">Perspective Journal</h3>
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Journal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio for accessibility -->
+    <audio id="click-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YU9vT18=" type="audio/wav">
+    </audio>
+
+    <!-- JavaScript -->
+    <script src="js/main.js" defer></script>
+    <script src="js/perspective.js" defer></script>
+    <script src="js/journal.js" defer></script>
+    <script src="js/action-finder.js" defer></script>
+    <script src="js/issues.js" defer></script>
+    <script src="js/utils.js" defer></script>
+</body>
+</html>
