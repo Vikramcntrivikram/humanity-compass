@@ -458,7 +458,7 @@ function findActionPath() {
             "Mentor first-generation college students",
             "Support after-school programs in your area"
         ],
-        human-rights: [
+        "human-rights": [
             "Join local civil rights organizations",
             "Monitor elections or participate in peaceful advocacy",
             "Support refugee resettlement agencies",
