@@ -73,6 +73,30 @@ document.addEventListener('DOMContentLoaded', function() {
         loadJournalEntries();
     });
 
+        document.getElementById('try-systems').addEventListener('click', function() {
+        openModal('systems-modal');
+    });
+
+    document.getElementById('try-culture').addEventListener('click', function() {
+        openModal('culture-modal');
+    });
+
+    document.getElementById('try-ethics').addEventListener('click', function() {
+        openModal('ethics-modal');
+    });
+
+    document.getElementById('open-tracker').addEventListener('click', function() {
+        openModal('tracker-modal');
+    });
+
+    document.getElementById('open-insights').addEventListener('click', function() {
+        openModal('insights-modal');
+    });
+
+    document.getElementById('download-guide').addEventListener('click', function() {
+        alert('Generate a personalized action guide from the "Discover My Path" quiz above first — then this button will create your custom guide.');
+    });
+
     // Close modals
     modalCloseButtons.forEach(button => {
         button.addEventListener('click', function() {
