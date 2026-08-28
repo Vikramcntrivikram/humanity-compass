@@ -674,20 +674,86 @@ Developed by VIKRAM CN TRIVIKRAM
     playClickSound();
 }
 
+const issuePerspectives = {
+    climate: {
+        name: "Climate Change",
+        perspectives: [
+            { role: "Farmer in Sub-Saharan Africa", view: "Unpredictable rainfall has cut my harvests in half over ten years. Climate change isn't a future risk to me — it's why I can't feed my family the way my parents could." },
+            { role: "Factory Owner", view: "Cutting emissions fast means higher costs and job losses now. I need a transition plan, not an overnight mandate, or my workers pay the price first." },
+            { role: "Climate Scientist", view: "The data shows a narrowing window — every year of delay locks in worse outcomes that are far more expensive to reverse than to prevent." },
+            { role: "Coastal City Resident", view: "My insurance premiums have tripled and my street floods every year now. I want action, but I also can't afford to move." }
+        ],
+        question: "Whose timeline should shape climate policy — the scientist's, the worker's, or the farmer's?"
+    },
+    health: {
+        name: "Global Health",
+        perspectives: [
+            { role: "Rural Nurse", view: "The nearest hospital is four hours away. People die of treatable conditions simply because care isn't nearby." },
+            { role: "Health Insurance Executive", view: "Expanding coverage without controlling costs bankrupts the system for everyone, including the people we're trying to help." },
+            { role: "Patient with Chronic Illness", view: "I ration my medication some months because I can't afford the full dose. That's not a policy debate to me, it's survival." },
+            { role: "Public Health Researcher", view: "Prevention is cheaper and saves more lives than treatment, but it's harder to fund because the payoff isn't immediate." }
+        ],
+        question: "Should health systems prioritize immediate treatment or long-term prevention when resources are limited?"
+    },
+    economy: {
+        name: "Economic Inequality",
+        perspectives: [
+            { role: "Minimum Wage Worker", view: "I work two jobs and still can't save. Every price increase eats into money I don't have." },
+            { role: "Small Business Owner", view: "Higher wages sound fair, but if my margins disappear, I can't hire anyone — including the person asking for a raise." },
+            { role: "Economist", view: "Inequality above a certain threshold slows overall growth, but forced redistribution often has unintended side effects." },
+            { role: "Philanthropist", view: "Private giving matters, but it can't substitute for structural fixes like education access and fair tax policy." }
+        ],
+        question: "Is inequality mainly a policy failure, an economic trade-off, or both?"
+    },
+    migration: {
+        name: "Migration & Displacement",
+        perspectives: [
+            { role: "Refugee", view: "I didn't choose to leave my home. I want safety and the chance to rebuild, not charity — a chance to contribute." },
+            { role: "Border Town Resident", view: "Our schools and clinics are already stretched thin. I'm not against helping people, but nobody planned for this many, this fast." },
+            { role: "Immigration Officer", view: "Every case is a human story, but the system processes thousands of them with rules that can't bend for each one." },
+            { role: "Economist studying migration", view: "Migrants often fill critical labor gaps and grow the economy over time, even though the short-term adjustment is hard." }
+        ],
+        question: "How do we balance a community's capacity to absorb newcomers with a migrant's urgent need for safety?"
+    },
+    technology: {
+        name: "Technology & Society",
+        perspectives: [
+            { role: "Factory Worker facing automation", view: "The machine that replaced me doesn't need healthcare or a paycheck. Nobody retrained me for what comes next." },
+            { role: "AI Researcher", view: "These tools can also create entirely new kinds of work and free people from dangerous or repetitive labor — the transition just needs support." },
+            { role: "Rural Resident without reliable internet", view: "Everyone talks about the digital future, but I can't even get a stable connection to apply for jobs online." },
+            { role: "Privacy Advocate", view: "Convenience is being traded for surveillance, and most people don't realize how much data they're giving away." }
+        ],
+        question: "Who is responsible for helping people adapt when technology moves faster than institutions can respond?"
+    },
+    food: {
+        name: "Food Security",
+        perspectives: [
+            { role: "Smallholder Farmer", view: "I grow enough to sell, but not enough to guarantee my own family eats well every month — droughts wipe out margins fast." },
+            { role: "Nutritionist in an urban food desert", view: "It's not just about hunger — it's that healthy food is often more expensive and harder to find than processed food." },
+            { role: "Agribusiness Executive", view: "Scaling production efficiently is what actually lowers food prices globally, even if it looks less romantic than small farms." },
+            { role: "Food Waste Reduction Advocate", view: "We already produce enough food to feed everyone — a huge share is lost or wasted before it ever reaches a plate." }
+        ],
+        question: "Is food insecurity mainly a production problem, a distribution problem, or an economic access problem?"
+    }
+};
+
 function showIssueDetails(issueType) {
-    // In a full implementation, this would open a detailed modal or page
-    // For now, we'll show an alert with basic info
-    const issueNames = {
-        climate: "Climate Change",
-        health: "Global Health",
-        economy: "Economic Inequality",
-        migration: "Migration & Displacement",
-        technology: "Technology & Society",
-        food: "Food Security"
-    };
+    const issue = issuePerspectives[issueType];
+    if (!issue) return;
 
-    alert(`Exploring ${issueNames[issueType]} perspectives...\n\nThis would open a detailed exploration of this issue from multiple cultural, economic, and social perspectives in a full implementation.`);
+    document.getElementById('issue-modal-title').textContent = issue.name + ' — Multiple Perspectives';
 
+    let html = '';
+    issue.perspectives.forEach(p => {
+        html += `<div class="perspective-block" style="margin-bottom: 1.25rem;">
+            <h4 style="margin-bottom: 0.25rem;">${p.role}</h4>
+            <p style="margin: 0;">"${p.view}"</p>
+        </div>`;
+    });
+    html += `<hr style="margin: 1.5rem 0;"><p><strong>Reflect:</strong> ${issue.question}</p>`;
+
+    document.getElementById('issue-modal-body').innerHTML = html;
+    openModal('issue-modal');
     playClickSound();
 }
 
